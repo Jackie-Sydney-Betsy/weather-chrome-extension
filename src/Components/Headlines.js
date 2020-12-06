@@ -2,40 +2,50 @@
 
 import '../style/App.css';
 import React, { Component } from 'react';
+import Axios from 'axios';
 // require('dotenv').config();
 
-const api_news = 'ea82cee3b4344c309e5736689b7aef0e';
+const api_news = 'f04ec099625cca548c7fa2c3011e26f3';
 
 class Headlines extends Component {
 	constructor() {
 		super();
-		this.getTopEnvironmentHeadlines = this.getTopEnvironmentHeadlines.bind(
-			this
-		);
+		this.state = {
+			enviroNews: { articles: [] },
+		};
 	}
 
-	async getTopEnvironmentHeadlines() {
+	async componentDidMount() {
 		try {
-			//get top environment news articles using NewsAPI
-			const api_call = await fetch(
-				`https://newsapi.org/v2/top-headlines?q=climate&apiKey=${api_news}`
+			//get top environment news articles using gnews
+			const { data } = await Axios.get(
+				`https://gnews.io/api/v4/search?q=climate&max=3&token=${api_news}`
 			);
-			let enviroNews = await api_call.json();
-			this.setState({ enviroNews });
+			this.setState({ enviroNews: data });
 		} catch (err) {
 			console.log(err);
-			console.log('hi');
 		}
 	}
 
 	render() {
-		console.log(this.state);
+		console.log('state in render: ', this.state);
 		return (
 			<>
-				<div className="headlines">Headlines</div>
-				<button onClick={this.getTopEnvironmentHeadlines}>
-					Get Top Enviro News
-				</button>
+				<div className='headlines'>Headlines</div>
+				{this.state.enviroNews ? (
+					this.state.enviroNews.articles.map((article) => {
+						return (
+							<div>
+								<h1>
+									<a src={article.source.url}>{article.title}</a>
+								</h1>
+								<p>{article.author}</p>
+							</div>
+						);
+					})
+				) : (
+					<div></div>
+				)}
 			</>
 		);
 	}

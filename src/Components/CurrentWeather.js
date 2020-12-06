@@ -60,7 +60,7 @@ class CurrentWeather extends Component {
 	render() {
 		return (
 			<>
-				<div className="currentWeather">Current Weathers</div>
+				<div className='currentWeather'>Current Weathers</div>
 
 				<p>1.</p>
 				<button onClick={this.findMe}>Find Me</button>

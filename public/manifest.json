@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Weather Extension",
-  "description": "This is a chrome extension that tells you the weather and also shows you climate trends over the past several years",
+  "name": "My Extension",
+  "description": "This extension is a starting point to create a real Chrome extension",
   "version": "0.0.1",
 
   "browser_action": {
@@ -11,9 +11,8 @@
   },
   "icons": {
     "16": "weather-app-small.png",
-    "48": "weather-app.png"
+    "48": "weather-app-small.png",
+    "128": "weather-app-small.png"
   },
-  "content_security_policy": "script-src 'self' 'sha256-X4JnrGFvyVSUPmsfn54fSpd/jbxPprlJ9XxJtG99p0U='; object-src 'self'",
-  "permissions": [
-  ]
+  "content_security_policy": "script-src: 'self' 'sha256-X4JnrGFvyVSUPmsfn54fSpd/jbxPprlJ9XxJtG99p0U='; object-src 'self'"
 }

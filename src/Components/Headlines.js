@@ -24,6 +24,7 @@ class Headlines extends Component {
 			this.setState({ enviroNews });
 		} catch (err) {
 			console.log(err);
+			console.log('hi');
 		}
 	}
 

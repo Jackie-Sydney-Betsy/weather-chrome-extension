@@ -1,0 +1,63 @@
+.App {
+	text-align: center;
+	/* //standard maximums for chrome extensions */
+	height: 600px;
+	width: 600px;
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0;
+}
+
+/* .App-logo {
+	height: 100vmin;
+	pointer-events: none;
+} */
+
+.weatherHistory {
+	/* height: 33vh;
+	width: 100vw; */
+	flex: 2;
+}
+.currentWeather {
+	/* height: 33vh;
+	width: 100vw; */
+	flex: 1;
+}
+.headlines {
+	/* height: 33vh;
+	width: 100vw; */
+	flex: 1;
+}
+
+/* .App-header {
+	background-color: #282c34;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: white;
+} */
+
+.App-link {
+	color: #61dafb;
+}
+
+/* Spinning react logo */
+/* @keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+/* more on spinning logo */
+/* @media (prefers-reduced-motion: no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+} */

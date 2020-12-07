@@ -9,40 +9,50 @@
 	padding: 0;
 }
 
-/* .App-logo {
-	height: 100vmin;
-	pointer-events: none;
-} */
+h2 {
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	background-color: darkgray;
+	background-blend-mode: soft-light;
+	border: black;
+	opacity: 0.5;
+	width: 75%;
+}
+
+.currentWeather {
+	flex: 1;
+}
 
 .weatherHistory {
-	/* height: 33vh;
-	width: 100vw; */
 	flex: 2;
 }
-.currentWeather {
-	/* height: 33vh;
-	width: 100vw; */
-	flex: 1;
-}
+
 .headlines {
-	/* height: 33vh;
-	width: 100vw; */
 	flex: 1;
+	align-items: center;
+}
+.headline {
+	text-decoration: none;
+	text-align: left;
+	margin-left: 10px;
+	font-size: large;
+	font-weight: bold;
 }
 
-/* .App-header {
-	background-color: #282c34;
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(10px + 2vmin);
-	color: white;
-} */
+#description {
+	font-size: xx-small;
+	font-style: italic;
+}
 
-.App-link {
-	color: #61dafb;
+/* link styling */
+a {
+	text-decoration: none;
+	color: white;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+a:visited {
+	text-decoration: none;
+	color: white;
 }
 
 /* Spinning react logo */

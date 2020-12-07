@@ -8,10 +8,9 @@ body {
 	overscroll-behavior: none;
 	background: rgb(2, 0, 36);
 	background: linear-gradient(
-		90deg,
-		rgba(2, 0, 36, 1) 0%,
-		rgba(9, 9, 121, 1) 35%,
-		rgba(0, 212, 255, 1) 100%
+		to bottom,
+		rgba(43, 50, 178) 0%,
+		rgba(20, 136, 204) 100%
 	);
 	color: white;
 }

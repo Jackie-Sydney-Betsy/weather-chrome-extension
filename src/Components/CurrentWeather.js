@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 // require('dotenv').config();
 
 const api_weather = 'e707b58c89718134c069cbb85065ffc4';
+//might not need this second one but haven;t tested bc too lazy lol
 const api_weather2 = 'e9446f061bceb277c12cd5a91fe25e16';
 
 class CurrentWeather extends Component {
@@ -45,7 +46,6 @@ class CurrentWeather extends Component {
 	}
 
 	render() {
-		console.log(this.props.location);
 		return (
 			<>
 				<div className="currentWeather">Current Weathers</div>

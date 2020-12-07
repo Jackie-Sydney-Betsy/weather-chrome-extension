@@ -2,8 +2,8 @@
 
 import '../style/App.css';
 
-import Chart from './Chart'
-import ChartAnimated from './ChartAnimated'
+import Chart from './Chart';
+import ChartAnimated from './ChartAnimated';
 
 import React, { Component } from 'react';
 
@@ -32,31 +32,23 @@ class WeatherHistory extends Component {
 			let fiveAgo = day.getFullYear() - 5;
 			day.setFullYear(tenAgo);
 			let [month, date, year] = day.toLocaleDateString('en-US').split('/');
-			// let dateTenPrev = `${year}-${month}-${date}`;
 
 			let years = [fiveAgo, tenAgo];
-			let results = [];
 			let dateString = `-${month}-${date}`;
+			console.log(this.props.location.city);
+			const requestUrl = `https://api.worldweatheronline.com/premium/v1/past-weather.ashx?q=${
+				this.props.location.city ? this.props.location.city : 'new+york'
+			}&tp=24&format=json&key=${api_weatherHistory}`;
 
-			const requestUrl = `https://api.worldweatheronline.com/premium/v1/past-weather.ashx?q=${this.props.location.city}&tp=24&format=json&key=${api_weatherHistory}`;
-
-			years.forEach((year, index) => {
+			years.forEach(async (year, index) => {
 				let currentUrl = requestUrl + '&date=' + year + dateString;
-
-				fetch(currentUrl, function (error, response, body) {
-					if (!error && response.statusCode === 200) {
-						let result = JSON.parse(body);
-						results[index] = result.data.weather[0];
-					} else {
-						console.log(error, response);
-					}
+				console.log('currUrl', currentUrl);
+				let data = await fetch(currentUrl).then(function (response) {
+					return response.json();
 				});
+				console.log(data);
+				//how to store this on state?
 			});
-
-			//not working rn
-			console.log(results);
-
-	
 
 			// this.setState({ data });
 		} catch (err) {
@@ -69,13 +61,11 @@ class WeatherHistory extends Component {
 		return (
 			<>
 				<div className="weatherHistory">Weather History</div>
-      <ChartAnimated />
+				<ChartAnimated />
 				<button onClick={this.getHistory}>Get History</button>
-      
 			</>
 		);
 	}
-
 }
 
 export default WeatherHistory;

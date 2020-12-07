@@ -28,7 +28,7 @@ class Headlines extends Component {
 	}
 
 	render() {
-		console.log('state in render: ', this.state);
+		// console.log('state in render: ', this.state);
 		return (
 			<>
 				<div className='headlines'>Headlines</div>

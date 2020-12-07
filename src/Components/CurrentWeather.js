@@ -12,20 +12,32 @@ const api_weather2 = 'e9446f061bceb277c12cd5a91fe25e16';
 class CurrentWeather extends Component {
 	constructor(props) {
 		super(props);
-		this.getWeather = this.getWeather.bind(this);
 		this.calculateTemp = this.calculateTemp.bind(this);
 	}
 
-	async getWeather() {
+	async componentDidMount() {
 		try {
-			//if the user input a city/state
-			if (this.props.location.city.length) {
+			const api_call = await fetch(
+				`https://api.openweathermap.org/data/2.5/weather?lat=${this.props.location.lat}&lon=${this.props.location.lng}&APPID=${api_weather}`
+			);
+			const data = await api_call.json();
+			this.setState({ data });
+		} catch (err) {
+			console.log(err);
+		}
+	}
+
+	//component did update
+	async componentDidUpdate(prevProps) {
+		try {
+			//if the user clicks find me or enters a city name
+			if (prevProps.location.city !== this.props.location.city) {
 				const api_call = await fetch(
 					`https://api.openweathermap.org/data/2.5/weather?q=${this.props.location.city}&APPID=${api_weather2}`
 				);
 				const data = await api_call.json();
 				this.setState({ data });
-			} else {
+			} else if(prevProps.location.lat !== this.props.location.lat) {
 				//get their current weather based on lat/lng
 				const api_call = await fetch(
 					`https://api.openweathermap.org/data/2.5/weather?lat=${this.props.location.lat}&lon=${this.props.location.lng}&APPID=${api_weather}`
@@ -48,18 +60,23 @@ class CurrentWeather extends Component {
 	render() {
 		return (
 			<>
-				<div className="currentWeather">Current Weathers</div>
+				<div className="currentWeather">
+					<h1>
+						Current Weather in{' '}
+						{this.state ? this.state.data.name : `Long Island City`}
+					</h1>
 
-				<button onClick={this.getWeather}>Get Weather</button>
-
-				{this.state && this.state.data ? (
-					<>
-						<p>The weather in {this.state.data.name} is:</p>
-						<p>{this.calculateTemp(this.state.data.main.temp, 'F')} degrees</p>
-					</>
-				) : (
-					''
-				)}
+					{this.state && this.state.data ? (
+						<>
+							<p>The weather in {this.state.data.name} is:</p>
+							<p>
+								{this.calculateTemp(this.state.data.main.temp, 'F')} degrees
+							</p>
+						</>
+					) : (
+						''
+					)}
+				</div>
 			</>
 		);
 	}

@@ -19,11 +19,11 @@ class WeatherHistory extends Component {
 			//if it's lat/lng, concat with a ,
 			//get today's date from 2008
 
-			const api_call = await fetch(
+			const data = await fetch(
 				`https://api.worldweatheronline.com/premium/v1/past-weather.ashx?q=${this.props.location.city}&tp=24&format=json&key=${api_weatherHistory}&date=2008-12-25`
 			);
 			//can also repeat this call for multiple dates???
-			const data = await api_call.json();
+
 			this.setState({ data });
 		} catch (err) {
 			console.log(err);

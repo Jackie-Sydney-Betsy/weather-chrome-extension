@@ -1,6 +1,10 @@
 /** @format */
 
 import '../style/App.css';
+
+import Chart from './Chart'
+import ChartAnimated from './ChartAnimated'
+
 import React, { Component } from 'react';
 
 const api_weatherHistory = '5c22c30e40de4f8787010138200712';
@@ -65,10 +69,13 @@ class WeatherHistory extends Component {
 		return (
 			<>
 				<div className="weatherHistory">Weather History</div>
+      <ChartAnimated />
 				<button onClick={this.getHistory}>Get History</button>
+      
 			</>
 		);
 	}
+
 }
 
 export default WeatherHistory;

@@ -35,6 +35,7 @@ class Headlines extends Component {
 	}
 
 	render() {
+
 		return (
 			<>
 				<div className='headlines'>

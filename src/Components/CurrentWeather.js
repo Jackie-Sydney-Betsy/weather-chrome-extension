@@ -63,7 +63,7 @@ class CurrentWeather extends Component {
 			<>
 				<div className="currentWeather">
 					<h1>
-						Current Weather in
+						{`Current Weather in `}
 						{this.state && this.state.data.name
 							? this.state.data.name
 							: `Long Island City`}

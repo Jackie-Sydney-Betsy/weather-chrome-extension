@@ -23,13 +23,14 @@ class App extends Component {
 
 	async findMe() {
 		try {
-			//find the user's location
 			navigator.geolocation.getCurrentPosition(async (position) => {
+
 				this.setState({
 					lat: position.coords.latitude,
 					lng: position.coords.longitude,
 				});
 			});
+			
 			//should probably include something if the geolocation is not successful
 		} catch (err) {
 			console.log(err);
@@ -80,7 +81,6 @@ class App extends Component {
 						onChange={this.handleChange}
 						required
 					/> */}{' '}
-
 					<button type="submit">Submit</button>
 				</form>
 				<CurrentWeather location={this.state} />

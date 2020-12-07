@@ -52,7 +52,7 @@ class WeatherHistory extends Component {
 			//not working rn
 			console.log(results);
 
-			//can also repeat this call for multiple dates???
+	
 
 			// this.setState({ data });
 		} catch (err) {

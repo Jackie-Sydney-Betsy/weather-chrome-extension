@@ -8,6 +8,7 @@ import React, { Component } from 'react';
 const api_weather = 'e707b58c89718134c069cbb85065ffc4';
 //might not need this second one but haven;t tested bc too lazy lol
 const api_weather2 = 'e9446f061bceb277c12cd5a91fe25e16';
+const api_weather3 = 'e85282415ad04fe926b501b1b9888316';
 
 class CurrentWeather extends Component {
 	constructor(props) {
@@ -37,7 +38,7 @@ class CurrentWeather extends Component {
 				);
 				const data = await api_call.json();
 				this.setState({ data });
-			} else if(prevProps.location.lat !== this.props.location.lat) {
+			} else if (prevProps.location.lat !== this.props.location.lat) {
 				//get their current weather based on lat/lng
 				const api_call = await fetch(
 					`https://api.openweathermap.org/data/2.5/weather?lat=${this.props.location.lat}&lon=${this.props.location.lng}&APPID=${api_weather}`
@@ -62,11 +63,13 @@ class CurrentWeather extends Component {
 			<>
 				<div className="currentWeather">
 					<h1>
-						Current Weather in{' '}
-						{this.state ? this.state.data.name : `Long Island City`}
+						Current Weather in
+						{this.state && this.state.data.name
+							? this.state.data.name
+							: `Long Island City`}
 					</h1>
 
-					{this.state && this.state.data ? (
+					{this.state && this.state.data.name ? (
 						<>
 							<p>The weather in {this.state.data.name} is:</p>
 							<p>
@@ -74,7 +77,7 @@ class CurrentWeather extends Component {
 							</p>
 						</>
 					) : (
-						''
+						'Loading'
 					)}
 				</div>
 			</>

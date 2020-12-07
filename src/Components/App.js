@@ -84,7 +84,7 @@ class App extends Component {
 					<button type="submit">Submit</button>
 				</form>
 				<CurrentWeather location={this.state} />
-				<WeatherHistory />
+				<WeatherHistory location={this.state} />
 				<Headlines />
 			</div>
 		);

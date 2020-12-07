@@ -50,7 +50,6 @@ class CurrentWeather extends Component {
 			<>
 				<div className="currentWeather">Current Weathers</div>
 
-				<p>2.</p>
 				<button onClick={this.getWeather}>Get Weather</button>
 
 				{this.state && this.state.data ? (

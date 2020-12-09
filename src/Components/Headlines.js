@@ -3,7 +3,6 @@
 import '../style/App.css';
 import React, { Component } from 'react';
 import Axios from 'axios';
-import { Link } from 'react-router-dom';
 // require('dotenv').config();
 
 import articles from './data';
@@ -35,23 +34,34 @@ class Headlines extends Component {
 	}
 
 	render() {
-
 		return (
 			<>
 				<div className='headlines'>
-					<h2>Top Climate Change Headlines Today</h2>
-					{this.state.enviroNews ? (
-						this.state.enviroNews.articles.map((article) => {
-							return (
-								<div className='headline' key={article.title}>
-									<a href={article.url}>{article.title}</a>
-									<p id='description'>{article.description}</p>
-								</div>
-							);
-						})
-					) : (
-						<div></div>
-					)}
+					<div id='heading'>
+						<h2>Top Climate Change Headlines Today</h2>
+					</div>
+					<div id='list'>
+						{this.state.enviroNews ? (
+							this.state.enviroNews.articles.map((article) => {
+								return (
+									<div className='headline' key={article.title}>
+										<div id='article-text'>
+											<a href={article.url}>{article.title}</a>
+											<p id='description'>{article.description}</p>
+										</div>
+										<div>
+											<img
+												id='article-image'
+												src='https://kgo.googleusercontent.com/profile_vrt_raw_bytes_1587515341_10369.jpg'
+											/>
+										</div>
+									</div>
+								);
+							})
+						) : (
+							<div></div>
+						)}
+					</div>
 				</div>
 			</>
 		);

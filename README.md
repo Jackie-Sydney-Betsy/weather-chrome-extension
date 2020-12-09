@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+<!-- @format -->
+
+# Weather App: A Google Chrome Extension
+
+**Climate Change is Real!**
+
+This app was developed by Sydney Scott, Jackie Feit, and Betsy Groton for [Mintbean's Social Justice Hackathon](https://mintbean.io/). The purpose of the app is to show users the impact that global warming has had on their location, and make sustainability a priority in the user's life. The app can get the user's location using Geolocation API, or accept the user's input location and find the current weather in that place using Open Weather Map API. The user can view how the temperature has changed in their location over the last 10 years in a chart designed with Victory.js. Lastly, the app uses Google's News API to show the top 3 headlines for that day related to the environment.
+
+## Table of Contents
+
+- [Overview](#Weather-App:-A-Google-Chrome-Extension)
+- [Table of Contents](#Table-of-Contents)
+- [Download](#Download)
+- [Team](#Team)
+  - [Sydney Scott](#Sydney-Scott)
+  - [Jackie Feit](#Jackie-Feit)
+  - [Elizabeth Groton](#Elizabeth-Groton)
+- [Tech Stack](#Tech-Stack)
+- [Acknowledgements](#Acknowledgements)
+
+## Download
+
+**Step by step guide for downloading repo:**
+
+```
+cd <directory you want to download to>
+
+git clone https://github.com/Jackie-Sydney-Betsy/weather-chrome-extension.git
+
+npm install
+
+npm run build
+
+in your browser, go to [](chrome://extensions/), click "Load Unpacked"
+
+click the extensions in the browser, and select the app's icon
+
+enjoy :)
+
+```
+
+## Team
+
+### `Sydney Scott`
+
+LinkedIn: https://www.linkedin.com/in/sydneyroxanascott/
+
+Github: https://github.com/sydneyscott47
+
+### `Jackie Feit`
+
+LinkedIn: https://www.linkedin.com/in/jackie-levine-feit/
+
+Github: https://github.com/jackiefeit94
+
+### `Elizabeth (Betsy) Groton`
+
+LinkedIn: https://www.linkedin.com/in/elizabethgroton/
+
+Github: https://github.com/betsyg6
+
+## Tech Stack
+
+- React
+
+- Google Chrome Extension
+
+- Various API's: [OpenWeatherMapAPI](https://openweathermap.org/current), [GeolocationAPI](https://developer.mozilla.org/en-US/docs/Web/API/Geolocation_API), [WorldWeatherOnline](https://www.worldweatheronline.com/developer/api/docs/historical-weather-api.aspx), [GNewsAPI](https://gnews.io/)
+
+## Acknowledgements
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

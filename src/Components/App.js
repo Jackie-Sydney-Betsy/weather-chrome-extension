@@ -10,11 +10,9 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			//dummy data, coordinates for LIC
 			lat: 40.72683,
 			lng: -73.943512,
 			city: '',
-			// state: '',
 		};
 		this.findMe = this.findMe.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,8 +27,6 @@ class App extends Component {
 					lng: position.coords.longitude,
 				});
 			});
-
-			//should probably include something if the geolocation is not successful
 		} catch (err) {
 			console.log(err);
 		}
@@ -44,13 +40,10 @@ class App extends Component {
 
 	handleSubmit(e) {
 		let city = this.state.cityInput;
-		// let state = this.state.stateInput;
 		e.preventDefault();
 		this.setState({
 			cityInput: '',
-			// stateInput: '',
 			city: city,
-			// state: state,
 		});
 	}
 
@@ -61,9 +54,6 @@ class App extends Component {
 					<div id='heading'>
 						<h2>
 							{`Current Weather`}
-							{/* {this.state && this.state.data.name
-								? this.state.data.name
-								: `Long Island City`} */}
 						</h2>
 					</div>
 

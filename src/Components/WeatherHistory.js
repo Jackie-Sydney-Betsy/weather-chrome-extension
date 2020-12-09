@@ -2,9 +2,7 @@
 
 import '../style/App.css';
 import ChartAnimated from './ChartAnimated';
-
 import React, { Component } from 'react';
-
 const api_weatherHistory = '5c22c30e40de4f8787010138200712';
 
 class WeatherHistory extends Component {
@@ -17,22 +15,14 @@ class WeatherHistory extends Component {
 		};
 		this.getHistory = this.getHistory.bind(this);
 	}
-	//idea: possibly pay a service to demonstrate for one location how climate has changed over 50+ years?? or find climate change models that make predictions?
 
 	async getHistory() {
 		let highArr = [];
 		let lowArr = [];
 
 		try {
-			//determine if we're using lat/long or city
-			//if it's a city, check that it's one word
-			//if it's 2 words, split it, join it with a +
-			//if it's lat/lng, concat with a ,
-
-			//get date from 10 yrs ago
 			let day = new Date();
 			let years = [];
-
 			const makeYears = () => {
 				for (let i = 1; i < 13; i++) {
 					years.push(day.getFullYear() - i);
@@ -44,7 +34,9 @@ class WeatherHistory extends Component {
 			let dateString = `-${month}-${date}`;
 
 			const requestUrl = `https://api.worldweatheronline.com/premium/v1/past-weather.ashx?q=${
-				this.props.location.city ? this.props.location.city : 'new+york'
+				this.props.location.city
+					? this.props.location.city.split(' ').join('+')
+					: `${this.props.location.lat},${this.props.location.lng}`
 			}&tp=24&format=json&key=${api_weatherHistory}`;
 
 			years.forEach(async (year, index) => {
@@ -84,8 +76,8 @@ class WeatherHistory extends Component {
 	render() {
 		return (
 			<>
-				<div className='weatherHistory'>
-					<div id='heading'>
+				<div className="weatherHistory">
+					<div id="heading">
 						<h2>Weather History</h2>
 					</div>
 					{this.state.showChart ? (

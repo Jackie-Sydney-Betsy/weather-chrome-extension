@@ -3,13 +3,8 @@
 import '../style/App.css';
 import React, { Component } from 'react';
 import Location from './Location';
-
-// require('dotenv').config();
-
 const api_weather = 'e707b58c89718134c069cbb85065ffc4';
-//might not need this second one but haven;t tested bc too lazy lol
 const api_weather2 = 'e9446f061bceb277c12cd5a91fe25e16';
-const api_weather3 = 'e85282415ad04fe926b501b1b9888316';
 
 class CurrentWeather extends Component {
 	constructor(props) {
@@ -63,22 +58,23 @@ class CurrentWeather extends Component {
 	render() {
 		return (
 			<>
-				<div className='currentLeft'>
+				<div className="currentLeft">
 					{this.state && this.state.data.name ? (
 						<>
-							<div id='temp'>
+							<div id="temp">
 								<div>
 									<p>{this.state.data.name}</p>
 									<p>{this.calculateTemp(this.state.data.main.temp, 'F')} º</p>
 								</div>
 								<img
-									id='icon'
-									src='https://img.icons8.com/carbon-copy/100/000000/fog-night.png'
+									id="icon"
+									src="https://img.icons8.com/carbon-copy/100/000000/fog-night.png"
+									alt="No Image"
 								/>
 							</div>
 						</>
 					) : (
-						'Loading'
+						<p>Loading...</p>
 					)}
 				</div>
 			</>

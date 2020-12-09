@@ -7,24 +7,31 @@ class ChartAnimated extends React.Component {
 		this.state = { highs: this.props.highs, lows: this.props.lows };
 	}
 
+	componentDidUpdate (prevProps) {
+		if (this.props.highs[0] !== prevProps.highs[0]) {
+			this.setState({highs: this.props.highs, lows: this.props.lows})
+		}
+	}
+
 	render() {
-		console.log('STATE', this.state.lows, this.state.highs);
 		return (
-			<VictoryChart
-				id='chart'
-				theme={VictoryTheme.material}
-				animate={{ duration: 2000 }}
-				scale={{ x: 'time' }}
-				domain={{
-					x: [new Date(2008, 11, 1), new Date(2020, 0, 1)],
-					y: [0, 100],
-				}}
-			>
-				<VictoryStack colorScale={'blue'}>
-					<VictoryArea data={this.state.lows} interpolation={'natural'} />
-					<VictoryArea data={this.state.highs} interpolation={'natural'} />
-				</VictoryStack>
-			</VictoryChart>
+
+				<VictoryChart
+					id='chart'
+					theme={VictoryTheme.material}
+					animate={{ duration: 2000 }}
+					scale={{ x: 'time' }}
+					domain={{
+						x: [new Date(2008, 11, 1), new Date(2020, 0, 1)],
+						y: [0, 100],
+					}}
+				>
+					<VictoryStack colorScale={'blue'}>
+						<VictoryArea data={this.state.lows} interpolation={'natural'} />
+						<VictoryArea data={this.state.highs} interpolation={'natural'} />
+					</VictoryStack>
+				</VictoryChart>
+
 		);
 	}
 }

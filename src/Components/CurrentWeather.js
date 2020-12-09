@@ -3,6 +3,7 @@
 import '../style/App.css';
 import React, { Component } from 'react';
 import Location from './Location';
+import WeatherHistory from './WeatherHistory'
 
 // require('dotenv').config();
 
@@ -48,7 +49,7 @@ class CurrentWeather extends Component {
 				const data = await api_call.json();
 				this.setState({ data });
 			}
-			console.log('weather data: ', this.state.data);
+			//console.log('weather data: ', this.state.data);
 		} catch (err) {
 			//need better error handling if the api key fails
 			console.log(err);
@@ -93,6 +94,7 @@ class CurrentWeather extends Component {
 						'Loading...'
 					)}
 				</div>
+				{this.state && this.state.data && <WeatherHistory location={this.state} temp={Math.floor(((this.state.data.main.temp - 273) * 9) / 5 + 32)}/>}
 			</>
 		);
 	}

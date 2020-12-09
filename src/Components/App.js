@@ -10,9 +10,9 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			//dummy data, coordinates for LIC
-			lat: 40.72683,
-			lng: -73.943512,
+			//dummy data, coordinates for Times Sq
+			lat: 40.758896,
+			lng: -73.985130,
 			city: '',
 			// state: '',
 		};
@@ -99,7 +99,6 @@ class App extends Component {
 					</div>
 				</div>
 				<hr />
-				<WeatherHistory location={this.state} />
 				<hr />
 				<Headlines />
 			</div>

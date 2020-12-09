@@ -7,10 +7,14 @@ class ChartAnimated extends React.Component {
 		this.state = { highs: this.props.highs, lows: this.props.lows };
 	}
 
+	componentDidUpdate (prevProps) {
+		if (this.props.highs[0] !== prevProps.highs[0]) {
+			this.setState({highs: this.props.highs, lows: this.props.lows})
+		}
+	}
+
 	render() {
-		console.log('STATE', this.state.lows, this.state.highs);
 		return (
-			<svg viewBox='100 100 100 100'>
 				<VictoryChart
 					id='chart'
 					theme={VictoryTheme.material}
@@ -26,7 +30,6 @@ class ChartAnimated extends React.Component {
 						<VictoryArea data={this.state.highs} interpolation={'natural'} />
 					</VictoryStack>
 				</VictoryChart>
-			</svg>
 		);
 	}
 }

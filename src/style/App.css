@@ -36,26 +36,25 @@ h2 {
 	background-color: darkgrey;
 	/* transparent background for articles */
 	background: rgba(255, 255, 255, 0.1);
-	padding: 2%;
+	padding: 1%;
 	font-size: x-large;
-	height: 10rem;
+	height: 12rem;
 	width: 10rem;
 	border-radius: 10px;
 }
 
 .currentRight {
 	flex: 1;
-	margin-right: 2%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 	background-color: darkgrey;
 	/* transparent background for articles */
 	background: rgba(255, 255, 255, 0.1);
 	margin: 2%;
-	padding: 2%;
-	height: 10rem;
+	padding: 1%;
+	height: 12rem;
 	width: 10rem;
 	border-radius: 10px;
 }
@@ -137,10 +136,15 @@ a:visited {
 }
 
 button {
-	width: 8rem;
-	background-color: rgb(12, 12, 65);
+	width: 7rem;
+	/* transparent background for articles */
+	background: rgba(255, 255, 255, 0.1);
 	color: white;
-	border-radius: 15px;
+	border-radius: 7px;
+}
+button:hover {
+	background-color: rgb(12, 12, 65);
+	transition: all 0.7s ease 0s;
 }
 
 #form {
@@ -150,15 +154,52 @@ button {
 
 #temp {
 	display: flex;
+	flex-direction: column;
+}
+
+#degrees-icon {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 6rem;
 }
 
 #icon {
-	height: 10px;
-	width: 10px;
+	height: 7rem;
+	width: 7rem;
 }
 
 /* line break styling */
 hr {
 	color: white;
 	width: 50%;
+}
+
+#degrees {
+	font-size: xx-large;
+	display: flex;
+	flex-direction: column;
+}
+
+small {
+	font-size: x-small;
+}
+
+input {
+	background-color: darkgrey;
+	/* transparent background for articles */
+	background: rgba(255, 255, 255, 0.1);
+}
+
+#cold {
+	background: hsl(228deg 25% 91% / 38%);
+}
+#cool {
+	background: hsl(228deg 53% 64% / 38%);
+}
+#warm {
+	background: hsl(45deg 93% 46% / 45%);
+}
+#hot {
+	background: hsl(0deg 100% 50% / 44%);
 }

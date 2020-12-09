@@ -77,9 +77,10 @@ class App extends Component {
 						<div className='currentRight'>
 							<div id='form'>
 								<form onSubmit={this.handleSubmit}>
-									<label htmlFor='cityInput'>
+									{/* <label htmlFor='cityInput'>
 										<small>City</small>
-									</label>
+									</label> */}
+									<p> Enter city! </p>
 									<input
 										name='cityInput'
 										type='text'
@@ -87,12 +88,13 @@ class App extends Component {
 										onChange={this.handleChange}
 										required
 									/>
-									<button type='submit'>Submit</button>
+									<button type='submit'>ENTER</button>
 								</form>
 							</div>
 							<div>
+								<p> Or click Find Me! </p>
 								<button id='findMe' onClick={this.findMe}>
-									Find Me
+									FIND ME
 								</button>
 							</div>
 						</div>

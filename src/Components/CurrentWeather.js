@@ -67,6 +67,7 @@ class CurrentWeather extends Component {
 	}
 
 	render() {
+		this.state ? console.log(this.state) : console.log('');
 		return (
 			<>
 				<div className='currentLeft '>
@@ -79,11 +80,11 @@ class CurrentWeather extends Component {
 								<div id='degrees-icon'>
 									<img
 										id='icon'
-										src='https://img.icons8.com/carbon-copy/100/000000/fog-night.png'
+										src={`http://openweathermap.org/img/wn/${this.state.data.weather[0].icon}@2x.png`}
 									/>
 									<div id='degrees'>
 										{this.calculateTemp(this.state.data.main.temp, 'F')} º
-										<small>Summary</small>
+										<small>{this.state.data.weather[0].description}</small>
 									</div>
 								</div>
 							</div>

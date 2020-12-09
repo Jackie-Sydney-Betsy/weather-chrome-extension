@@ -31,6 +31,4 @@ const articles = [
 	},
 ];
 
-const weatherSymbols = {};
-
 export default articles;

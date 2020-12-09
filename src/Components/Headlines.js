@@ -18,22 +18,20 @@ class Headlines extends Component {
 		};
 	}
 
-	componentDidMount() {
-		// try {
-		// 	//get top environment news articles using gnews
-		// 	const { data } = await Axios.get(
-		// 		`https://gnews.io/api/v4/search?q=climate%20change&max=3&token=${api_news}`
-		// 	);
-		// 	this.setState({ enviroNews: data });
-		// } catch (err) {
-		// 	console.log(err);
-		// }
-		// const date = new Date();
-		// console.log(date);
-		// this.setState({ date: date });
+	async componentDidMount() {
+		try {
+			//get top environment news articles using gnews
+			const { data } = await Axios.get(
+				`https://gnews.io/api/v4/search?q=climate%20change&max=3&token=${api_news}`
+			);
+			this.setState({ enviroNews: data });
+		} catch (err) {
+			console.log(err);
+		}
 	}
 
 	render() {
+		this.state ? console.log('headlines: ', this.state) : console.log('');
 		return (
 			<>
 				<div className='headlines'>
@@ -50,10 +48,7 @@ class Headlines extends Component {
 											<p id='description'>{article.description}</p>
 										</div>
 										<div>
-											<img
-												id='article-image'
-												src='https://kgo.googleusercontent.com/profile_vrt_raw_bytes_1587515341_10369.jpg'
-											/>
+											<img id='article-image' src={article.image} />
 										</div>
 									</div>
 								);

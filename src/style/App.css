@@ -137,13 +137,14 @@ a:visited {
 
 button {
 	width: 7rem;
-	background-color: rgb(12, 12, 65);
+	/* transparent background for articles */
+	background: rgba(255, 255, 255, 0.1);
 	color: white;
-	border-radius: 15px;
+	border-radius: 7px;
 }
 button:hover {
-	background-color: darkgray;
-	transition: all 0.4s ease 0s;
+	background-color: rgb(12, 12, 65);
+	transition: all 0.7s ease 0s;
 }
 
 #form {
@@ -188,4 +189,17 @@ input {
 	background-color: darkgrey;
 	/* transparent background for articles */
 	background: rgba(255, 255, 255, 0.1);
+}
+
+#cold {
+	background: hsl(228deg 25% 91% / 38%);
+}
+#cool {
+	background: hsl(228deg 53% 64% / 38%);
+}
+#warm {
+	background: hsl(45deg 93% 46% / 45%);
+}
+#hot {
+	background: hsl(0deg 100% 50% / 44%);
 }

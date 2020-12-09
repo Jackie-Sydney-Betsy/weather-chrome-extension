@@ -10,6 +10,7 @@ const api_weather = 'e707b58c89718134c069cbb85065ffc4';
 //might not need this second one but haven;t tested bc too lazy lol
 const api_weather2 = 'e9446f061bceb277c12cd5a91fe25e16';
 const api_weather3 = 'e85282415ad04fe926b501b1b9888316';
+let colorClass = '';
 
 class CurrentWeather extends Component {
 	constructor(props) {
@@ -56,14 +57,19 @@ class CurrentWeather extends Component {
 
 	//temp conversion from kelvin
 	calculateTemp(degreesK, displayUnits) {
-		if (displayUnits === 'C') return Math.floor(degreesK - 273);
-		else return Math.floor(((degreesK - 273) * 9) / 5 + 32);
+		let degrees;
+		if (displayUnits === 'C') {
+			degrees = Math.floor(degreesK - 273);
+		} else {
+			degrees = Math.floor(((degreesK - 273) * 9) / 5 + 32);
+		}
+		return degrees;
 	}
 
 	render() {
 		return (
 			<>
-				<div className='currentLeft'>
+				<div className='currentLeft '>
 					{this.state && this.state.data.name ? (
 						<>
 							<div id='temp'>

@@ -24,13 +24,12 @@ class App extends Component {
 	async findMe() {
 		try {
 			navigator.geolocation.getCurrentPosition(async (position) => {
-
 				this.setState({
 					lat: position.coords.latitude,
 					lng: position.coords.longitude,
 				});
 			});
-			
+
 			//should probably include something if the geolocation is not successful
 		} catch (err) {
 			console.log(err);
@@ -57,34 +56,51 @@ class App extends Component {
 
 	render() {
 		return (
-			<div className="App">
-				<button onClick={this.findMe}>Find Me</button>
-				<form onSubmit={this.handleSubmit}>
-					<label htmlFor="cityInput">
-						<small>City</small>
-					</label>
-					<input
-						name="cityInput"
-						type="text"
-						value={this.state.cityInput}
-						onChange={this.handleChange}
-						required
-					/>
-					{/* <label htmlFor="stateInput">
-						<small>State</small>
-					</label>
-					{/* make this a state dropdown */}
-					{/* <input
-						name="stateInput"
-						type="text"
-						value={this.state.stateInput}
-						onChange={this.handleChange}
-						required
-					/> */}{' '}
-					<button type="submit">Submit</button>
-				</form>
-				<CurrentWeather location={this.state} />
+			<div className='App'>
+				<div className='currentWeather'>
+					<div id='heading'>
+						<h2>
+							{`Current Weather`}
+							{/* {this.state && this.state.data.name
+								? this.state.data.name
+								: `Long Island City`} */}
+						</h2>
+					</div>
+
+					<div className='currentContainer'>
+						<CurrentWeather
+							handleChange={this.handleChange}
+							handleSubmit={this.handleSubmit}
+							findMe={this.findMe}
+							location={this.state}
+						/>
+						<div className='currentRight'>
+							<div id='form'>
+								<form onSubmit={this.handleSubmit}>
+									<label htmlFor='cityInput'>
+										<small>City</small>
+									</label>
+									<input
+										name='cityInput'
+										type='text'
+										value={this.state.cityInput}
+										onChange={this.handleChange}
+										required
+									/>
+									<button type='submit'>Submit</button>
+								</form>
+							</div>
+							<div>
+								<button id='findMe' onClick={this.findMe}>
+									Find Me
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr />
 				<WeatherHistory location={this.state} />
+				<hr />
 				<Headlines />
 			</div>
 		);

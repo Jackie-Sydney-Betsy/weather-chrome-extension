@@ -9,21 +9,66 @@
 	padding: 0;
 }
 
+/* main heading */
 h2 {
 	font-family: Georgia, 'Times New Roman', Times, serif;
-	background-color: darkgray;
-	background-blend-mode: soft-light;
-	border: black;
-	opacity: 0.5;
-	width: 75%;
+	background-color: darkgrey;
+	opacity: 0.7;
+	width: 80%;
+	box-shadow: 8px 5px #423d3d;
+	text-shadow: 2px 2px #0b278e;
 }
 
 .currentWeather {
 	flex: 1;
 }
 
+.currentContainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.currentLeft {
+	flex: 1;
+	text-align: left;
+	margin: 2%;
+	background-color: darkgrey;
+	/* transparent background for articles */
+	background: rgba(255, 255, 255, 0.1);
+	padding: 2%;
+	font-size: x-large;
+	height: 10rem;
+	width: 10rem;
+	border-radius: 10px;
+}
+
+.currentRight {
+	flex: 1;
+	margin-right: 2%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: darkgrey;
+	/* transparent background for articles */
+	background: rgba(255, 255, 255, 0.1);
+	margin: 2%;
+	padding: 2%;
+	height: 10rem;
+	width: 10rem;
+	border-radius: 10px;
+}
+
+#weather-heading {
+	display: flex;
+}
+
 .weatherHistory {
 	flex: 2;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 .headlines {
@@ -31,16 +76,52 @@ h2 {
 	align-items: center;
 }
 .headline {
+	display: flex;
 	text-decoration: none;
 	text-align: left;
 	margin-left: 10px;
 	font-size: large;
 	font-weight: bold;
+	color: black;
+	background-color: darkgrey;
+	/* transparent background for articles */
+	background: rgba(255, 255, 255, 0.1);
+	margin: 5px;
+	padding: 10px;
+	justify-content: space-between;
 }
 
+/* article descriptions */
 #description {
 	font-size: xx-small;
 	font-style: italic;
+}
+
+/* #article-text {
+
+}
+*/
+
+/* article previe image */
+#article-image {
+	height: 50px;
+	width: 50px;
+}
+
+#heading {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#list {
+	display: flex;
+	flex-direction: column;
+}
+
+#chart {
+	height: 100px;
+	width: 100px;
 }
 
 /* link styling */
@@ -55,19 +136,29 @@ a:visited {
 	color: white;
 }
 
-/* Spinning react logo */
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+button {
+	width: 8rem;
+	background-color: rgb(12, 12, 65);
+	color: white;
+	border-radius: 15px;
+}
 
-/* more on spinning logo */
-/* @media (prefers-reduced-motion: no-preference) {
-	.App-logo {
-		animation: App-logo-spin infinite 20s linear;
-	}
-} */
+#form {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+#temp {
+	display: flex;
+}
+
+#icon {
+	height: 10px;
+	width: 10px;
+}
+
+/* line break styling */
+hr {
+	color: white;
+	width: 50%;
+}

@@ -2,6 +2,7 @@
 
 import '../style/App.css';
 import React, { Component } from 'react';
+import Location from './Location';
 
 // require('dotenv').config();
 
@@ -46,6 +47,7 @@ class CurrentWeather extends Component {
 				const data = await api_call.json();
 				this.setState({ data });
 			}
+			console.log('weather data: ', this.state.data);
 		} catch (err) {
 			//need better error handling if the api key fails
 			console.log(err);
@@ -61,20 +63,19 @@ class CurrentWeather extends Component {
 	render() {
 		return (
 			<>
-				<div className="currentWeather">
-					<h1>
-						{`Current Weather in `}
-						{this.state && this.state.data.name
-							? this.state.data.name
-							: `Long Island City`}
-					</h1>
-
+				<div className='currentLeft'>
 					{this.state && this.state.data.name ? (
 						<>
-							<p>The weather in {this.state.data.name} is:</p>
-							<p>
-								{this.calculateTemp(this.state.data.main.temp, 'F')} degrees
-							</p>
+							<div id='temp'>
+								<div>
+									<p>{this.state.data.name}</p>
+									<p>{this.calculateTemp(this.state.data.main.temp, 'F')} º</p>
+								</div>
+								<img
+									id='icon'
+									src='https://img.icons8.com/carbon-copy/100/000000/fog-night.png'
+								/>
+							</div>
 						</>
 					) : (
 						'Loading'

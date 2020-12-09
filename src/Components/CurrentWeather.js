@@ -68,17 +68,22 @@ class CurrentWeather extends Component {
 						<>
 							<div id='temp'>
 								<div>
-									<p>{this.state.data.name}</p>
-									<p>{this.calculateTemp(this.state.data.main.temp, 'F')} º</p>
+									<div>{this.state.data.name}</div>
 								</div>
-								<img
-									id='icon'
-									src='https://img.icons8.com/carbon-copy/100/000000/fog-night.png'
-								/>
+								<div id='degrees-icon'>
+									<img
+										id='icon'
+										src='https://img.icons8.com/carbon-copy/100/000000/fog-night.png'
+									/>
+									<div id='degrees'>
+										{this.calculateTemp(this.state.data.main.temp, 'F')} º
+										<small>Summary</small>
+									</div>
+								</div>
 							</div>
 						</>
 					) : (
-						'Loading'
+						'Loading...'
 					)}
 				</div>
 			</>

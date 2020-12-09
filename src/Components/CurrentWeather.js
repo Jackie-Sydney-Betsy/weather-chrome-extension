@@ -11,6 +11,7 @@ const api_weather = 'e707b58c89718134c069cbb85065ffc4';
 //might not need this second one but haven;t tested bc too lazy lol
 const api_weather2 = 'e9446f061bceb277c12cd5a91fe25e16';
 const api_weather3 = 'e85282415ad04fe926b501b1b9888316';
+let colorClass = '';
 
 class CurrentWeather extends Component {
 	constructor(props) {
@@ -57,29 +58,40 @@ class CurrentWeather extends Component {
 
 	//temp conversion from kelvin
 	calculateTemp(degreesK, displayUnits) {
-		if (displayUnits === 'C') return Math.floor(degreesK - 273);
-		else return Math.floor(((degreesK - 273) * 9) / 5 + 32);
+		let degrees;
+		if (displayUnits === 'C') {
+			degrees = Math.floor(degreesK - 273);
+		} else {
+			degrees = Math.floor(((degreesK - 273) * 9) / 5 + 32);
+		}
+		return degrees;
 	}
 
 	render() {
+		this.state ? console.log(this.state) : console.log('');
 		return (
 			<>
-				<div className='currentLeft'>
+				<div className='currentLeft '>
 					{this.state && this.state.data.name ? (
 						<>
 							<div id='temp'>
 								<div>
-									<p>{this.state.data.name}</p>
-									<p>{this.calculateTemp(this.state.data.main.temp, 'F')}º</p>
+									<div>{this.state.data.name}</div>
 								</div>
-								<img
-									id='icon'
-									src='https://img.icons8.com/carbon-copy/100/000000/fog-night.png'
-								/>
+								<div id='degrees-icon'>
+									<img
+										id='icon'
+										src={`http://openweathermap.org/img/wn/${this.state.data.weather[0].icon}@2x.png`}
+									/>
+									<div id='degrees'>
+										{this.calculateTemp(this.state.data.main.temp, 'F')} º
+										<small>{this.state.data.weather[0].description}</small>
+									</div>
+								</div>
 							</div>
 						</>
 					) : (
-						'Loading'
+						'Loading...'
 					)}
 				</div>
 				{this.state && this.state.data && <WeatherHistory location={this.state} temp={Math.floor(((this.state.data.main.temp - 273) * 9) / 5 + 32)}/>}

@@ -15,6 +15,7 @@ class ChartAnimated extends React.Component {
 
 	render() {
 		return (
+
 				<VictoryChart
 					id='chart'
 					theme={VictoryTheme.material}
@@ -30,6 +31,7 @@ class ChartAnimated extends React.Component {
 						<VictoryArea data={this.state.highs} interpolation={'natural'} />
 					</VictoryStack>
 				</VictoryChart>
+
 		);
 	}
 }

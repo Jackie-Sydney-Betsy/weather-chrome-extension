@@ -72,8 +72,8 @@ class App extends Component {
 					<div id='form'>
 						<form onSubmit={this.handleSubmit}>
 							<div id='inputBox'>
-								<div> Enter city! </div>
 								<input
+									placeholder='Enter city!'
 									name='cityInput'
 									type='text'
 									value={this.state.cityInput}

@@ -5,7 +5,15 @@
 **Climate Change is Real!**
 :sunny: :umbrella: :cloud: :snowflake: :zap: :cyclone:
 
-Weather Watcher was developed by Sydney Scott, Jackie Feit, and Betsy Groton for [Mintbean's Social Justice Hackathon](https://mintbean.io/). The purpose of the app is to show users the impact that global warming has had on their location, and make sustainability a priority in the user's life. The app can get the user's location using Geolocation API, or accept the user's input location and find the current weather in that place using Open Weather Map API. The user can view how the temperature has changed in their location over the last 10 years in a chart designed with Victory.js. Lastly, the app uses Google's News API to show the top 3 headlines for that day related to the environment.
+Weather Watcher was developed by Sydney Scott, Jackie Feit, and Betsy Groton for [Mintbean's Social Justice Hackathon](https://mintbean.io/). The purpose of the app is to show users the impact that global warming has had on their location, and make sustainability a priority in the user's life. The app can get the user's location using Geolocation API, or accept the user's input location and find the current weather in that place using Open Weather Map API.
+
+<img src="https://media.giphy.com/media/ZbioT9xwNvb76HjmzA/giphy.gif" alt="location" />
+
+The user can view how the temperature has changed in their location over the last 10 years in a chart designed with Victory.js. Lastly, the app uses Google's News API to show the top 3 headlines for that day related to the environment.
+
+<img src="https://media.giphy.com/media/WD7GdVKKhRDdrfFjaR/giphy.gif" alt="weatherApp" />
+
+You can view the full video walk-through [here](https://www.youtube.com/watch?v=36AS_etm0JM&feature=youtu.be)!
 
 ## Table of Contents
 

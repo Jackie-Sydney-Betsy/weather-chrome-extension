@@ -59,6 +59,7 @@ class CurrentWeather extends Component {
 	}
 
 	render() {
+		console.log('current weather state: ', this.state);
 		return (
 			<>
 				<div className='currentLeft '>
@@ -77,6 +78,24 @@ class CurrentWeather extends Component {
 										{this.calculateTemp(this.state.data.main.temp, 'F')} º
 										<small>{this.state.data.weather[0].description}</small>
 									</div>
+								</div>
+							</div>
+							<div id='statsContainer'>
+								<div id='statsItem'>
+									Feels like:{' '}
+									{this.calculateTemp(this.state.data.main.feels_like, 'F')} º
+								</div>
+								<div id='statsItem'>
+									Humidity: {this.state.data.main.humidity} %
+								</div>
+								<div id='statsItem'>
+									Low: {this.calculateTemp(this.state.data.main.temp_min, 'F')}{' '}
+									º <br></br>
+									High: {this.calculateTemp(
+										this.state.data.main.temp_max,
+										'F'
+									)}{' '}
+									º
 								</div>
 							</div>
 						</>

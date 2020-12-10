@@ -8,7 +8,7 @@ class Headlines extends Component {
 	constructor() {
 		super();
 		this.state = {
-			enviroNews: { articles: [] },
+			articles: [],
 		};
 	}
 
@@ -18,15 +18,13 @@ class Headlines extends Component {
 			const { data } = await Axios.get(
 				`https://gnews.io/api/v4/search?q=climate%20change&max=3&token=${process.env.REACT_APP_api_news}`
 			);
-			console.log('data: ', data);
-			this.setState({ enviroNews: { articles: data.articles } });
+			this.setState({ articles: data.articles });
 		} catch (err) {
 			console.log(err);
 		}
 	}
 
 	render() {
-		console.log(this.state.enviroNews.articles);
 		return (
 			<>
 				<div className='headlines'>
@@ -34,9 +32,8 @@ class Headlines extends Component {
 						<h2>Top Climate Change Headlines Today</h2>
 					</div>
 					<div id='list'>
-						{this.state.enviroNews.articles &&
-						this.state.enviroNews.articles.length ? (
-							this.state.enviroNews.articles.map((article) => {
+						{this.state.articles.length ? (
+							this.state.articles.map((article) => {
 								return (
 									<div className='headline' key={article.title}>
 										<div id='article-text'>

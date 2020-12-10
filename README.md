@@ -42,7 +42,7 @@ npm install
 
 npm run build
 
-in your browser, go to [](chrome://extensions/), click "Load Unpacked"
+in your browser, go to [](chrome://extensions/), click "Load Unpacked," navigate to the repo on your machine, and choose the build folder
 
 click the extensions in the browser, and select the app's icon
 

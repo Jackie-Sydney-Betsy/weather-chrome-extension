@@ -41,7 +41,7 @@ class Headlines extends Component {
 											<p id='description'>{article.description}</p>
 										</div>
 										<div>
-											<img id='article-image' src={article.image} />
+											<img id='article-image' src={article.image} alt=''/>
 										</div>
 									</div>
 								);

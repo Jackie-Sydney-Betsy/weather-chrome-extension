@@ -18,7 +18,7 @@ class WeatherHistory extends Component {
 	}
 	//idea: possibly pay a service to demonstrate for one location how climate has changed over 50+ years?? or find climate change models that make predictions?
 
-	getHistory() {
+	async getHistory() {
 		this.setState({ average: 0 });
 		let highArr = [];
 		let lowArr = [];

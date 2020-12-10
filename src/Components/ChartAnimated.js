@@ -1,6 +1,10 @@
 import React from 'react';
-import { VictoryChart, VictoryStack, VictoryArea,
-	VictoryTheme, VictoryAxis, VictoryLine } from 'victory';
+import {
+	VictoryChart,
+	VictoryStack,
+	VictoryArea,
+	VictoryTheme,
+	VictoryAxis } from 'victory';
 
 class ChartAnimated extends React.Component {
 	constructor(props) {

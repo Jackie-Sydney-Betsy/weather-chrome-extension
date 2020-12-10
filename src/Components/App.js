@@ -93,7 +93,7 @@ class App extends Component {
 				</div>
 
 				<hr />
-				{/*<Headlines />*/}
+					<Headlines />
 			</div>
 		);
 	}

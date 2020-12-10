@@ -40,9 +40,7 @@ class CurrentWeather extends Component {
 				const data = await api_call.json();
 				this.setState({ data });
 			}
-			//console.log('weather data: ', this.state.data);
 		} catch (err) {
-			//need better error handling if the api key fails
 			console.log(err);
 		}
 	}
@@ -59,7 +57,6 @@ class CurrentWeather extends Component {
 	}
 
 	render() {
-		console.log('current weather state: ', this.state);
 		return (
 			<>
 				<div className='currentLeft '>
@@ -73,6 +70,7 @@ class CurrentWeather extends Component {
 									<img
 										id='icon'
 										src={`http://openweathermap.org/img/wn/${this.state.data.weather[0].icon}@2x.png`}
+										alt=''
 									/>
 									<div id='degrees'>
 										{this.calculateTemp(this.state.data.main.temp, 'F')} º

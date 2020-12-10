@@ -44,6 +44,8 @@ npm run build
 
 in your browser, go to [](chrome://extensions/), click "Load Unpacked," navigate to the repo on your machine, and choose the build folder
 
+you'll need your own api keys (see details below) and to save them in a .env file in order to access weather and news data
+
 click the extensions in the browser, and select the app's icon
 
 enjoy :)

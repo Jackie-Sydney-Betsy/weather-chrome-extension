@@ -3,18 +3,12 @@
 import '../style/App.css';
 import React, { Component } from 'react';
 import Axios from 'axios';
-// require('dotenv').config();
-
-import articles from './data';
-
-const api_news = 'f04ec099625cca548c7fa2c3011e26f3';
 
 class Headlines extends Component {
 	constructor() {
 		super();
 		this.state = {
-			enviroNews: { articles: articles },
-			date: '',
+			enviroNews: { articles: [] },
 		};
 	}
 
@@ -22,16 +16,17 @@ class Headlines extends Component {
 		try {
 			//get top environment news articles using gnews
 			const { data } = await Axios.get(
-				`https://gnews.io/api/v4/search?q=climate%20change&max=3&token=${api_news}`
+				`https://gnews.io/api/v4/search?q=climate%20change&max=3&token=${process.env.REACT_APP_api_news}`
 			);
-			this.setState({ enviroNews: data });
+			console.log('data: ', data);
+			this.setState({ enviroNews: { articles: data.articles } });
 		} catch (err) {
 			console.log(err);
 		}
 	}
 
 	render() {
-		this.state ? console.log('headlines: ', this.state) : console.log('');
+		console.log(this.state.enviroNews.articles);
 		return (
 			<>
 				<div className='headlines'>
@@ -39,7 +34,8 @@ class Headlines extends Component {
 						<h2>Top Climate Change Headlines Today</h2>
 					</div>
 					<div id='list'>
-						{this.state.enviroNews ? (
+						{this.state.enviroNews.articles &&
+						this.state.enviroNews.articles.length ? (
 							this.state.enviroNews.articles.map((article) => {
 								return (
 									<div className='headline' key={article.title}>

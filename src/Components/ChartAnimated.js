@@ -1,5 +1,6 @@
 import React from 'react';
-import { VictoryChart, VictoryStack, VictoryArea, VictoryTheme } from 'victory';
+import { VictoryChart, VictoryStack, VictoryArea,
+	VictoryTheme, VictoryAxis, VictoryLine } from 'victory';
 
 class ChartAnimated extends React.Component {
 	constructor(props) {
@@ -30,6 +31,18 @@ class ChartAnimated extends React.Component {
 						<VictoryArea data={this.state.lows} interpolation={'natural'} />
 						<VictoryArea data={this.state.highs} interpolation={'natural'} />
 					</VictoryStack>
+					<VictoryAxis
+					style={{
+			 grid: { stroke: "white"},
+			 tickLabels: { fontSize: 8, fill: "white" },
+
+	 }}/>
+        <VictoryAxis dependentAxis
+				style={{
+		 grid: { stroke: "white"},
+		 tickLabels: { fontSize: 8, fill: "white" },
+
+ }}/>
 				</VictoryChart>
 
 		);

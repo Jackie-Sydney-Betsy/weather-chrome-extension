@@ -2,15 +2,7 @@
 
 import '../style/App.css';
 import React, { Component } from 'react';
-import Location from './Location';
-
-// require('dotenv').config();
-
-const api_weather = 'e707b58c89718134c069cbb85065ffc4';
-//might not need this second one but haven;t tested bc too lazy lol
-const api_weather2 = 'e9446f061bceb277c12cd5a91fe25e16';
-const api_weather3 = 'e85282415ad04fe926b501b1b9888316';
-let colorClass = '';
+import WeatherHistory from './WeatherHistory';
 
 class CurrentWeather extends Component {
 	constructor(props) {
@@ -21,7 +13,7 @@ class CurrentWeather extends Component {
 	async componentDidMount() {
 		try {
 			const api_call = await fetch(
-				`https://api.openweathermap.org/data/2.5/weather?lat=${this.props.location.lat}&lon=${this.props.location.lng}&APPID=${api_weather}`
+				`https://api.openweathermap.org/data/2.5/weather?lat=${this.props.location.lat}&lon=${this.props.location.lng}&APPID=${process.env.REACT_APP_api_weather}`
 			);
 			const data = await api_call.json();
 			this.setState({ data });
@@ -36,19 +28,19 @@ class CurrentWeather extends Component {
 			//if the user clicks find me or enters a city name
 			if (prevProps.location.city !== this.props.location.city) {
 				const api_call = await fetch(
-					`https://api.openweathermap.org/data/2.5/weather?q=${this.props.location.city}&APPID=${api_weather2}`
+					`https://api.openweathermap.org/data/2.5/weather?q=${this.props.location.city}&APPID=${process.env.REACT_APP_api_weather}`
 				);
 				const data = await api_call.json();
 				this.setState({ data });
 			} else if (prevProps.location.lat !== this.props.location.lat) {
 				//get their current weather based on lat/lng
 				const api_call = await fetch(
-					`https://api.openweathermap.org/data/2.5/weather?lat=${this.props.location.lat}&lon=${this.props.location.lng}&APPID=${api_weather}`
+					`https://api.openweathermap.org/data/2.5/weather?lat=${this.props.location.lat}&lon=${this.props.location.lng}&APPID=${process.env.REACT_APP_api_weather}`
 				);
 				const data = await api_call.json();
 				this.setState({ data });
 			}
-			console.log('weather data: ', this.state.data);
+			//console.log('weather data: ', this.state.data);
 		} catch (err) {
 			//need better error handling if the api key fails
 			console.log(err);
@@ -67,6 +59,7 @@ class CurrentWeather extends Component {
 	}
 
 	render() {
+		console.log('current weather state: ', this.state);
 		return (
 			<>
 				<div className='currentLeft '>
@@ -79,17 +72,45 @@ class CurrentWeather extends Component {
 								<div id='degrees-icon'>
 									<img
 										id='icon'
-										src='https://img.icons8.com/carbon-copy/100/000000/fog-night.png'
+										src={`http://openweathermap.org/img/wn/${this.state.data.weather[0].icon}@2x.png`}
 									/>
 									<div id='degrees'>
 										{this.calculateTemp(this.state.data.main.temp, 'F')} º
-										<small>Summary</small>
+										<small>{this.state.data.weather[0].description}</small>
 									</div>
+								</div>
+							</div>
+							<div id='statsContainer'>
+								<div id='statsItem'>
+									Feels like:{' '}
+									{this.calculateTemp(this.state.data.main.feels_like, 'F')} º
+								</div>
+								<div id='statsItem'>
+									Humidity: {this.state.data.main.humidity} %
+								</div>
+								<div id='statsItem'>
+									Low: {this.calculateTemp(this.state.data.main.temp_min, 'F')}{' '}
+									º <br></br>
+									High: {this.calculateTemp(
+										this.state.data.main.temp_max,
+										'F'
+									)}{' '}
+									º
 								</div>
 							</div>
 						</>
 					) : (
 						'Loading...'
+					)}
+				</div>
+				<div id='currentRight'>
+					{this.state && this.state.data && (
+						<WeatherHistory
+							location={this.state}
+							temp={Math.floor(
+								((this.state.data.main.temp - 273) * 9) / 5 + 32
+							)}
+						/>
 					)}
 				</div>
 			</>

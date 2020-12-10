@@ -5,8 +5,6 @@ import ChartAnimated from './ChartAnimated';
 
 import React, { Component } from 'react';
 
-const api_weatherHistory = '5c22c30e40de4f8787010138200712';
-
 class WeatherHistory extends Component {
 	constructor(props) {
 		super(props);
@@ -14,25 +12,24 @@ class WeatherHistory extends Component {
 			highs: [],
 			lows: [],
 			showChart: false,
+			average: 0,
 		};
 		this.getHistory = this.getHistory.bind(this);
 	}
 	//idea: possibly pay a service to demonstrate for one location how climate has changed over 50+ years?? or find climate change models that make predictions?
 
-	async getHistory() {
+	getHistory() {
+		this.setState({ average: 0 });
 		let highArr = [];
 		let lowArr = [];
+		let sum = 0;
+		let total = 0;
 
 		try {
-			//determine if we're using lat/long or city
-			//if it's a city, check that it's one word
-			//if it's 2 words, split it, join it with a +
-			//if it's lat/lng, concat with a ,
-
-			//get date from 10 yrs ago
 			let day = new Date();
 			let years = [];
 
+			// push years since 2008 into an array
 			const makeYears = () => {
 				for (let i = 1; i < 13; i++) {
 					years.push(day.getFullYear() - i);
@@ -44,12 +41,14 @@ class WeatherHistory extends Component {
 			let dateString = `-${month}-${date}`;
 
 			const requestUrl = `https://api.worldweatheronline.com/premium/v1/past-weather.ashx?q=${
-				this.props.location.city ? this.props.location.city : 'new+york'
-			}&tp=24&format=json&key=${api_weatherHistory}`;
+				this.props.location.data.name
+					? this.props.location.data.name.split(' ').join('+')
+					: `${this.props.location.data.coord.lat},${this.props.location.data.coord.lng}`
+			}&tp=24&format=json&key=${process.env.REACT_APP_api_weatherHistory}`;
 
+			// make API requests for each year since 2008
 			years.forEach(async (year, index) => {
 				let currentUrl = requestUrl + '&date=' + year + dateString;
-
 				let data = await fetch(currentUrl).then(function (response) {
 					return response.json();
 				});
@@ -73,6 +72,11 @@ class WeatherHistory extends Component {
 					),
 					y: Number(data.data.weather[0].mintempF),
 				});
+				sum +=
+					Number(data.data.weather[0].maxtempF) +
+					Number(data.data.weather[0].mintempF);
+				total += 2;
+				this.setState({ average: sum / total });
 			});
 		} catch (err) {
 			console.log(err);
@@ -81,19 +85,39 @@ class WeatherHistory extends Component {
 		this.setState({ showChart: true, highs: highArr, lows: lowArr });
 	}
 
+	componentDidMount() {
+		this.getHistory();
+	}
+
+	componentDidUpdate(prevProps) {
+		if (this.props.temp !== prevProps.temp) {
+			this.getHistory();
+		}
+	}
+
 	render() {
 		return (
 			<>
 				<div className='weatherHistory'>
-					<div id='heading'>
-						<h2>Weather History</h2>
-					</div>
 					{this.state.showChart ? (
 						<ChartAnimated highs={this.state.highs} lows={this.state.lows} />
 					) : (
 						''
 					)}
-					<button onClick={this.getHistory}>Get History</button>
+					{this.state.average > 0 && this.state.average < this.props.temp && (
+						<div id='historicalStats'>
+							Today is{' '}
+							{(
+								((this.props.temp - this.state.average) / this.state.average) *
+								100
+							).toFixed(2)}
+							% warmer <br />
+							than the average temperature ({this.state.average.toFixed(
+								2
+							)}) <br />
+							on this day since 2008.
+						</div>
+					)}
 				</div>
 			</>
 		);

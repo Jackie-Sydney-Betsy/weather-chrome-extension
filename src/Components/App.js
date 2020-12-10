@@ -2,7 +2,6 @@
 
 import '../style/App.css';
 import CurrentWeather from './CurrentWeather';
-import WeatherHistory from './WeatherHistory';
 import Headlines from './Headlines';
 import React, { Component } from 'react';
 
@@ -10,9 +9,9 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			//dummy data, coordinates for LIC
-			lat: 40.72683,
-			lng: -73.943512,
+			//dummy data, coordinates for Times Sq
+			lat: 40.758896,
+			lng: -73.98513,
 			city: '',
 			// state: '',
 		};
@@ -59,14 +58,8 @@ class App extends Component {
 			<div className='App'>
 				<div className='currentWeather'>
 					<div id='heading'>
-						<h2>
-							{`Current Weather`}
-							{/* {this.state && this.state.data.name
-								? this.state.data.name
-								: `Long Island City`} */}
-						</h2>
+						<h2>☀️ ☔ ☁️ Weather Watcher ❄️ ⚡ 🌀</h2>
 					</div>
-
 					<div className='currentContainer'>
 						<CurrentWeather
 							handleChange={this.handleChange}
@@ -74,36 +67,33 @@ class App extends Component {
 							findMe={this.findMe}
 							location={this.state}
 						/>
-						<div className='currentRight'>
-							<div id='form'>
-								<form onSubmit={this.handleSubmit}>
-									{/* <label htmlFor='cityInput'>
-										<small>City</small>
-									</label> */}
-									<p> Enter city! </p>
-									<input
-										name='cityInput'
-										type='text'
-										value={this.state.cityInput}
-										onChange={this.handleChange}
-										required
-									/>
-									<button type='submit'>ENTER</button>
-								</form>
+					</div>
+					<hr />
+					<div id='form'>
+						<form onSubmit={this.handleSubmit}>
+							<div id='inputBox'>
+								<input
+									placeholder='Enter city!'
+									name='cityInput'
+									type='text'
+									value={this.state.cityInput}
+									onChange={this.handleChange}
+									required
+								/>
 							</div>
-							<div>
-								<p> Or click Find Me! </p>
-								<button id='findMe' onClick={this.findMe}>
-									FIND ME
-								</button>
-							</div>
+							<button type='submit'>ENTER</button>
+						</form>
+						<div id='findMe'>
+							<div> Or click Find Me! </div>
+							<button id='findMe' onClick={this.findMe}>
+								FIND ME
+							</button>
 						</div>
 					</div>
 				</div>
+
 				<hr />
-				<WeatherHistory location={this.state} />
-				<hr />
-				<Headlines />
+				{/*<Headlines />*/}
 			</div>
 		);
 	}

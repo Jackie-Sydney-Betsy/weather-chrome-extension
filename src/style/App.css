@@ -17,6 +17,7 @@ h2 {
 	width: 80%;
 	box-shadow: 8px 5px #423d3d;
 	text-shadow: 2px 2px #0b278e;
+	border-radius: 5px;
 }
 
 .currentWeather {
@@ -26,7 +27,7 @@ h2 {
 .currentContainer {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: left;
 }
 
 .currentLeft {
@@ -35,12 +36,13 @@ h2 {
 	margin: 2%;
 	background-color: darkgrey;
 	/* transparent background for articles */
-	background: rgba(255, 255, 255, 0.1);
+	background: rgba(226, 12, 12, 0.193);
 	padding: 1%;
 	font-size: x-large;
-	height: 12rem;
-	width: 10rem;
+	height: 16rem;
+	width: 15rem;
 	border-radius: 10px;
+	position: relative;
 }
 
 .currentRight {
@@ -71,7 +73,7 @@ h2 {
 }
 
 .headlines {
-	flex: 1;
+	/* flex: 1; */
 	align-items: center;
 }
 .headline {
@@ -147,11 +149,6 @@ button:hover {
 	transition: all 0.7s ease 0s;
 }
 
-#form {
-	display: flex;
-	justify-content: space-evenly;
-}
-
 #temp {
 	display: flex;
 	flex-direction: column;
@@ -159,7 +156,7 @@ button:hover {
 
 #degrees-icon {
 	display: flex;
-	justify-content: space-around;
+	justify-content: left;
 	align-items: center;
 	height: 6rem;
 }
@@ -202,4 +199,46 @@ input {
 }
 #hot {
 	background: hsl(0deg 100% 50% / 44%);
+}
+
+#enterCity {
+	display: flex;
+}
+
+#form {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	background: rgb(5 13 51 / 45%);
+	margin: 2%;
+	padding: 2%;
+	border-radius: 3px;
+}
+
+#inputBox {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+}
+
+#historicalStats {
+	font-size: small;
+}
+
+#statsContainer {
+	display: flex;
+	height: 6rem;
+	width: 14rem;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+#statsItem {
+	height: 3rem;
+	width: 4rem;
+	background: hsl(17deg 93% 46% / 23%);
+	font-size: small;
+	border-radius: 3px;
+	margin: 2%;
+	padding: 1%;
 }
